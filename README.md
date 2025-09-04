@@ -27,9 +27,9 @@ This folder contains the necessary resources to implement a Terraform state back
 ```hcl
 s3_backend_parameters = {
     create_bucket = true
-    name          = "${local.common_name}-${local.project_name}-state"
+    name          = "${local.common_name}-tf-backend"
     aws_accounts = {
-      "EXAMPLE-DEV" = { account_id = "565219270600" }
+      "EXAMPLE-DEV" = { account_id = "123456789012" }
       # "EXAMPLE-QA"  = { account_id = "123456789013" }
       # "EXAMPLE-UAT"  = { account_id = "123456789014" }
       # "EXAMPLE-PRD"  = { account_id = "123456789015" }
