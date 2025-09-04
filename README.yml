@@ -33,33 +33,14 @@ features:
       ```hcl
       terraform-base state pull > terraform.tfstate
       ```
-    examples:
-      - title: Table of Variables
-        code: |
-          ```hcl
-          terraform-base state pull > terraform.tfstate
-          ```
 important_notes: ""
 input_table: |
   | create_bucket | Whether to create the S3 bucket | `bool` | `true` | no |
   | bucket | Bucket name for the S3 instance | `string` | `"${local.common_name}-${local.project_name}-state"` | no |
-  | block_public_acls | Block public ACLs on the bucket | `bool` | `true` | no |
-  | block_public_policy | Block public policies on the bucket | `bool` | `true` | no |
-  | ignore_public_acls | Ignore public ACLs on the bucket | `bool` | `true` | no |
-  | restrict_public_buckets | Restrict public bucket access | `bool` | `true` | no |
-  | object_ownership | Object ownership configuration for the bucket | `string` | `"BucketOwnerEnforced"` | no |
   | attach_policy | Whether to attach a policy to the bucket | `bool` | `true` | no |
   | policy | IAM policy document to be attached to the bucket | `string` | `data.aws_iam_policy_document.this.json` | no |
-  | versioning | Versioning configuration for the S3 bucket | `map` | `{enabled = true}` | no |
   | create_table | Whether to create the DynamoDB table | `bool` | `true` | no |
   | name | Name of the DynamoDB table | `string` | `"${local.common_name}-${local.project_name}-lock"` | no |
-  | hash_key | Hash key for the DynamoDB table | `string` | `"LockID"` | no |
-  | table_class | Table class for the DynamoDB table | `string` | `"STANDARD"` | no |
-  | attributes | Attributes for the DynamoDB table | `list` | `[{ name = "LockID", type = "S" }]` | no |
   | trusted_role_arns | ARNs of trusted roles for the IAM role | `list` | `["arn:aws:iam::${each.value.account_id}:root"]` | no |
-  | create_instance_profile | Whether to create an instance profile for the role | `bool` | `false` | no |
-  | max_session_duration | Maximum duration for the role session | `number` | `3600` | no |
-  | create_role | Whether to create the IAM role | `bool` | `true` | no |
   | role_name | Name of the IAM role to be created | `string` | `"${local.common_name}-s3-backend-${each.value.account_id}"` | no |
-  | role_requires_mfa | Whether the role requires MFA | `bool` | `false` | no |
   | custom_role_policy_arns | ARNs of custom role policies to attach to the IAM role | `list` | `[aws_iam_policy.this[each.key].arn]` | no |
