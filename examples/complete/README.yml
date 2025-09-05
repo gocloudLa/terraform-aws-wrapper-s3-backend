@@ -1,0 +1,7 @@
+title: "Complete Example"
+description: "This example demonstrates the creation of an S3 bucket for Terraform state storage with specific configurations for different AWS accounts."
+main_purpose: "The main purpose is to configure an S3 bucket for storing Terraform state files with the ability to specify different AWS accounts."
+key_features:
+  - "**Create Bucket**: Automatically creates an S3 bucket if it does not exist."
+  - "**Bucket Naming**: Uses a naming convention based on common name and project name."
+  - "**Aws Account Configuration**: Allows specifying multiple AWS accounts with their respective account IDs."
