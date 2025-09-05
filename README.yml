@@ -44,3 +44,4 @@ input_table: |
   | trusted_role_arns | ARNs of trusted roles for the IAM role | `list` | `["arn:aws:iam::${each.value.account_id}:root"]` | no |
   | role_name | Name of the IAM role to be created | `string` | `"${local.common_name}-s3-backend-${each.value.account_id}"` | no |
   | custom_role_policy_arns | ARNs of custom role policies to attach to the IAM role | `list` | `[aws_iam_policy.this[each.key].arn]` | no |
+  | tags | A map of tags to assign to resources. | `map` | `{}` | no |

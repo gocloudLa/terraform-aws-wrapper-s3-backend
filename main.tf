@@ -11,7 +11,7 @@ module "s3_bucket" {
   object_ownership        = "BucketOwnerEnforced"
   versioning              = { enabled = true }
 
-  tags = local.common_tags
+  tags = merge(local.common_tags, try(var.s3_backend_parameters.tags, var.s3_backend_defaults.tags, null))
 }
 
 module "dynamodb_table" {
@@ -29,7 +29,7 @@ module "dynamodb_table" {
     }
   ]
 
-  tags = local.common_tags
+  tags = merge(local.common_tags, try(var.s3_backend_parameters.tags, var.s3_backend_defaults.tags, null))
 }
 
 module "iam_assumable_role" {
@@ -50,5 +50,5 @@ module "iam_assumable_role" {
     aws_iam_policy.this[each.key].arn
   ]
 
-  tags = local.common_tags
+  tags = merge(local.common_tags, try(var.s3_backend_parameters.tags, var.s3_backend_defaults.tags, null))
 }
