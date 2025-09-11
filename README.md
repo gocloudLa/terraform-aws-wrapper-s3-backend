@@ -17,9 +17,9 @@ This folder contains the necessary resources to implement a Terraform state back
 ### 🔗 External Modules
 | Name | Version |
 |------|------:|
-| <a href="https://github.com/terraform-aws-modules/terraform-aws-dynamodb-table" target="_blank">terraform-aws-modules/dynamodb-table/aws</a> | 5.0.0 |
-| <a href="https://github.com/terraform-aws-modules/terraform-aws-iam" target="_blank">terraform-aws-modules/iam/aws</a> | 5.59.0 |
-| <a href="https://github.com/terraform-aws-modules/terraform-aws-s3-bucket" target="_blank">terraform-aws-modules/s3-bucket/aws</a> | 5.2.0 |
+| <a href="https://github.com/terraform-aws-modules/terraform-aws-dynamodb-table" target="_blank">terraform-aws-modules/dynamodb-table/aws</a> | 5.1.0 |
+| <a href="https://github.com/terraform-aws-modules/terraform-aws-iam" target="_blank">terraform-aws-modules/iam/aws</a> | 6.2.1 |
+| <a href="https://github.com/terraform-aws-modules/terraform-aws-s3-bucket" target="_blank">terraform-aws-modules/s3-bucket/aws</a> | 5.7.0 |
 
 
 
