@@ -48,8 +48,8 @@ module "iam_assumable_role" {
   }
   create_instance_profile = false
   max_session_duration    = 3600
-  create             = true
-  name               = "${lookup(var.s3_backend_parameters, "name", null)}-${each.value.account_id}"
+  create                  = true
+  name                    = "${lookup(var.s3_backend_parameters, "name", null)}-${each.value.account_id}"
   policies = {
     custom = aws_iam_policy.this[each.key].arn
   }
