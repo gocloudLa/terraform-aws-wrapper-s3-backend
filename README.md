@@ -35,8 +35,7 @@ s3_backend_parameters = {
   }
 ```
 <details>
-<summary><strong>Initial Configuration</strong></summary>
-  ### Initial Configuration
+<summary><strong>Complete Setup Guide 🚀🚀</strong></summary>
 
   This guide walks you through setting up a centralized Terraform state management solution using S3 and DynamoDB for state locking. Follow these steps to implement the backend infrastructure for your organization.
 
@@ -79,7 +78,58 @@ s3_backend_parameters = {
   }
   ```
 
-  **Step 3: Configure Terraform Backend**
+  **Step 3: Migrate Initial State to S3 (Optional)**
+
+  After running `terraform apply` in Step 2 and creating the S3 backend infrastructure, if you have an existing local state file, you need to migrate it to S3. This is typically done for the first workspace that creates the backend infrastructure.
+
+  **3.1: Configure Backend for Initial State Migration**
+
+  Add the following backend configuration block to your Terraform configuration. Replace `XXXXXXX` with the account ID where you're currently running Terraform and `YYYYYYYYYY` with the shared account ID where the bucket is deployed:
+
+  ```hcl
+  terraform {
+    backend "s3" {
+      bucket         = "${local.common_name}-tf-backend"
+      key            = "XXXXXXX/organization/terraform.tfstate"
+      region         = "us-east-2"
+      dynamodb_table = "${local.common_name}-tf-backend"
+      encrypt        = true
+      assume_role = {
+        role_arn = "arn:aws:iam::YYYYYYYYYY:role/${local.common_name}-tf-backend-XXXXXXX"
+      }
+    }
+  }
+  ```
+
+  **3.2: Initialize and Migrate State**
+
+  Run the following commands to initialize the backend and migrate your local state to S3:
+
+  ```bash
+  terraform init
+  ```
+
+  When prompted, type `yes` to copy the existing state to the new backend:
+
+  ```
+  Do you want to copy existing state to the new backend?
+    Pre-existing state was found while migrating the previous "local" backend to the
+    newly configured "s3" backend. No existing state was found in the newly
+    configured "s3" backend. Do you want to copy this state to the new "s3"
+    backend? Enter "yes" to copy and "no" to start with an empty state.
+
+    Enter a value: yes
+  ```
+
+  **3.3: Verify State Migration**
+
+  After successful migration, verify that your state is now stored in S3:
+
+  ```bash
+  terraform state list
+  ```
+
+  **Step 4: Configure Terraform Backend for Additional Workspaces**
 
   For each environment, configure the Terraform backend by adding the following block. Replace `XXXXXXX` with the account ID where resources are created and `YYYYYYYYYY` with the shared account ID where the bucket is deployed:
 
@@ -98,7 +148,7 @@ s3_backend_parameters = {
   }
   ```
 
-  **Step 4: Configure Secrets Management (Optional)**
+  **Step 5: Configure Secrets Management (Optional)**
 
   If you need to manage sensitive variables, create a `_secrets.tf` file:
 
@@ -133,7 +183,7 @@ s3_backend_parameters = {
 
   **⚠️ Critical:** Ensure each value (except the last one) is followed by a comma to separate it from the next entry, otherwise you'll encounter parsing errors.
 
-  **Step 5: Initialize and Plan**
+  **Step 6: Initialize and Plan**
 
   Run the following commands to initialize your Terraform configuration and create an execution plan:
 
