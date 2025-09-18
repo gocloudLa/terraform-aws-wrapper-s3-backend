@@ -1,4 +1,4 @@
-module "s3_bucket" {
+module "organization_s3_backend" {
   source   = "../.."
   metadata = local.metadata
 
@@ -6,10 +6,10 @@ module "s3_bucket" {
     create_bucket = true
     name          = "${local.common_name}-tf-backend"
     aws_accounts = {
-      "EXAMPLE-DEV" = { account_id = "565219270600" }
-      # "EXAMPLE-QA"  = { account_id = "123456789013" }
-      # "EXAMPLE-UAT"  = { account_id = "123456789014" }
-      # "EXAMPLE-PRD"  = { account_id = "123456789015" }
+      "example-dev" = { account_id = "565219270600" }
+      # "example-qa"  = { account_id = "123456789013" }
+      # "example-uat"  = { account_id = "123456789014" }
+      # "example-prd"  = { account_id = "123456789015" }
     }
   }
 
