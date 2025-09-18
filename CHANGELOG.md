@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/gocloudLa/terraform-aws-wrapper-s3-backend/compare/v1.0.0...v1.0.1) (2025-09-18)
+
+
+### Bug Fixes
+
+* **iam_assumable_role:** add missing options ([#4](https://github.com/gocloudLa/terraform-aws-wrapper-s3-backend/issues/4)) ([d388100](https://github.com/gocloudLa/terraform-aws-wrapper-s3-backend/commit/d388100fd40ae78a1b713cadd8d4ade07dfa78d8))
+* **terraform:** external modules upgrade 20250910 ([147eb52](https://github.com/gocloudLa/terraform-aws-wrapper-s3-backend/commit/147eb52524badaf7eedc9f1791b24320ff19e399))
+
 ## 1.0.0 (2025-09-05)
 
 
