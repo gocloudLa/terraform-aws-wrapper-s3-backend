@@ -34,7 +34,7 @@ module "dynamodb_table" {
 
 module "iam_assumable_role" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role"
-  version = "6.2.2"
+  version = "6.2.3"
 
   for_each = lookup(var.s3_backend_parameters, "name", null) != null && lookup(var.s3_backend_parameters, "name", "") != "" ? var.s3_backend_parameters.aws_accounts : {}
 
