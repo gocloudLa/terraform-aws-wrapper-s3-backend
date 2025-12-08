@@ -1,6 +1,6 @@
 module "s3_bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "5.8.2"
+  version = "5.9.0"
 
   create_bucket           = lookup(var.s3_backend_parameters, "name", null) != null && lookup(var.s3_backend_parameters, "name", "") != ""
   bucket                  = lookup(var.s3_backend_parameters, "name", null) != null && lookup(var.s3_backend_parameters, "name", "") != "" ? lookup(var.s3_backend_parameters, "name", null) : null
@@ -16,7 +16,7 @@ module "s3_bucket" {
 
 module "dynamodb_table" {
   source  = "terraform-aws-modules/dynamodb-table/aws"
-  version = "5.2.0"
+  version = "5.3.0"
 
   create_table = lookup(var.s3_backend_parameters, "name", null) != null && lookup(var.s3_backend_parameters, "name", "") != ""
   name         = lookup(var.s3_backend_parameters, "name", null) != null && lookup(var.s3_backend_parameters, "name", "") != "" ? lookup(var.s3_backend_parameters, "name", null) : null
@@ -34,7 +34,7 @@ module "dynamodb_table" {
 
 module "iam_assumable_role" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role"
-  version = "6.2.2"
+  version = "6.2.3"
 
   for_each = lookup(var.s3_backend_parameters, "name", null) != null && lookup(var.s3_backend_parameters, "name", "") != "" ? var.s3_backend_parameters.aws_accounts : {}
 
