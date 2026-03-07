@@ -9,7 +9,7 @@ locals {
     key = {
       company = "dmc"
       region  = "use2"
-      env     = "sha"
+      env     = "lab"
       layer   = "organization"
     }
   }
