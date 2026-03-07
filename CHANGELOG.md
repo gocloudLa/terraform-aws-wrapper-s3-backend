@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/gocloudLa/terraform-aws-wrapper-s3-backend/compare/v1.0.2...v1.0.3) (2026-03-07)
+
+
+### Bug Fixes
+
+* **deps:** bump the all-terraform-dependencies group across 1 directory with 3 updates ([#12](https://github.com/gocloudLa/terraform-aws-wrapper-s3-backend/issues/12)) ([1d0d320](https://github.com/gocloudLa/terraform-aws-wrapper-s3-backend/commit/1d0d32039e3aa5147eae76f14663b5f533c85a01))
+
 ## [1.0.2](https://github.com/gocloudLa/terraform-aws-wrapper-s3-backend/compare/v1.0.1...v1.0.2) (2025-11-25)
 
 
